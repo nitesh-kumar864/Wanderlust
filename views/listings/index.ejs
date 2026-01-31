@@ -1,0 +1,174 @@
+<% layout("/layouts/boilerplate") %>
+
+    <style>
+        /* FILTER BAR */
+        #topBar {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            font-weight: bolder;
+            font-size: 2;
+        }
+
+        #topBar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter {
+            text-align: center;
+            opacity: 0.55;
+            transition: 0.3s ease;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .filter.active {
+            color: red;
+            font-weight: bold;
+            opacity: 1;
+        }
+
+        .filter.active i {
+            color: red;
+        }
+
+        .filter:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+
+        .filter div {
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .filter p {
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+        }
+
+        /* TAX TOGGLE */
+        #gstBox {
+            display: flex;
+            margin-left: auto;
+            align-items: center;
+            gap: 0.7rem;
+            border: 1px solid #ccc;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            white-space: nowrap;
+        }
+    </style>
+
+    <body>
+        <div id="topBar">
+
+            <a href="/listings/filter/trending" class="filter">
+                <div><i class="fa-solid fa-fire"></i></div>
+                <p>Trending</p>
+            </a>
+
+            <a href="/listings/filter/rooms" class="filter">
+                <div><i class="fa-solid fa-bed"></i></div>
+                <p>Rooms</p>
+            </a>
+
+            <a href="/listings/filter/luxury" class="filter">
+                <i class="fa-solid fa-gem"></i>
+                <p>Luxury</p>
+            </a>
+
+            <a href="/listings/filter/family" class="filter">
+                <i class="fa-solid fa-people-group"></i>
+                <p>Family</p>
+            </a>
+
+            <a href="/listings/filter/hotels" class="filter">
+                <div><i class="fa-solid fa-hotel"></i></div>
+                <p>Hotels</p>
+            </a>
+
+            <a href="/listings/filter/villa" class="filter">
+                <i class="fa-solid fa-house-chimney"></i>
+                <p>Villa</p>
+            </a>
+
+            <a href="/listings/filter/mountain" class="filter">
+                <div><i class="fa-solid fa-mountain-city"></i></div>
+                <p>Mountain</p>
+            </a>
+
+            <a href="/listings/filter/beach" class="filter">
+                <div><i class="fa-solid fa-umbrella-beach"></i></div>
+                <p>Beach</p>
+            </a>
+
+            <a href="/listings/filter/cabins" class="filter">
+                <div><i class="fa-solid fa-house-chimney"></i></div>
+                <p>Cabins</p>
+            </a>
+
+            <a href="/listings/filter/pool" class="filter">
+                <div><i class="fa-solid fa-person-swimming"></i></div>
+                <p>Pool</p>
+            </a>
+
+            <!-- TAX TOGGLE -->
+            <div id="gstBox">
+                <input class="form-check-input" type="checkbox" id="gstToggle">
+                <label for="gstToggle" style="margin:0;">Display total before GST</label>
+            </div>
+
+        </div>
+
+        <!-- LISTINGS GRID -->
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-4">
+
+            <% for(let listing of allListings) { %>
+                <a href="/listings/<%= listing._id %>" class="listing-link">
+                    <div class="listing-card card col mb-4">
+                        <img src="<%= listing.image.url %>" class="card-img-top" height="260px">
+
+                        <div class="card-body">
+                            <p class="card-text">
+                                <b>
+                                    <%= listing.title %>
+                                </b><br>
+
+                                ₹<%= listing.price.toLocaleString("en-IN") %> / night
+                                    <span class="gst-text" style="display:none; color:gray; font-size:0.9rem;">
+                                        (+18% GST)
+                                    </span>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                <% } %>
+        </div>
+
+    </body>
+    <script>
+        const toggle = document.getElementById("gstToggle");
+        const gstTexts = document.getElementsByClassName("gst-text");
+
+        toggle.addEventListener("change", () => {
+            for (let gst of gstTexts) {
+                gst.style.display = toggle.checked ? "inline" : "none";
+            }
+        });
+
+        const filters = document.querySelectorAll(".filter");
+        const currentPath = window.location.pathname;
+
+        filters.forEach(filter => {
+            const href = filter.getAttribute("href");
+
+            if (href === currentPath) {
+                filter.classList.add("active");
+            }
+        });
+    </script>
