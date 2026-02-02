@@ -24,40 +24,64 @@ body {
 
 
 /* Footer */
+.f-info {
+    background-color: #ebebeb;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.f-info-social {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem; 
+}
+
+
+.f-info-social a {
+    text-decoration: none;
+   
+}
+
+.f-info-social a i {
+    font-size: 1.5rem;
+    color: #555;
+    background: transparent;
+   
+    transition: all 0.3s ease;
+}
+
+.f-info-social a:hover i {
+    background-color: #fe424d;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.f-info-brand {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.f-info-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
 .f-info-links a {
     text-decoration: none;
-    color: #222222;
+    color: #222;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
 }
 
 .f-info-links a:hover {
+    color: #fe424d;
     text-decoration: underline;
-    
 }
 
-.f-info-links,
-.f-info-social,f-info-brand {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-}
-
-
-.f-info-social i {
-    font-size: 1.2rem;
-    margin-right: 1rem;
-}
-
-.f-info {
-    text-align: center;
-    height: 8rem;
-    background-color: #ebebeb;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: space-evenly;
-}
 /* Cards */
 .listing-card {
     border: none !important;

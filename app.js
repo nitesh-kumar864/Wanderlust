@@ -26,6 +26,7 @@ app.use((req, res, next) => {
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
+const pageRouter= require("./routes/pages.js");
 
 const dbURL = process.env.MONGODB_URL;
 
@@ -94,6 +95,7 @@ app.use((req, res, next) => {
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
+app.use("/", pageRouter);
 
 // ERROR HANDLING
 app.use((req, res, next) => {
