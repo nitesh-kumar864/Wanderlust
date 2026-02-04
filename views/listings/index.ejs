@@ -1,68 +1,5 @@
 <% layout("/layouts/boilerplate") %>
-
-    <style>
-        /* FILTER BAR */
-        #topBar {
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-            overflow-x: auto;
-            white-space: nowrap;
-            padding: 1rem 0;
-            border-bottom: 1px solid #ddd;
-            font-weight: bolder;
-            font-size: 2;
-        }
-
-        #topBar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .filter {
-            text-align: center;
-            opacity: 0.55;
-            transition: 0.3s ease;
-            text-decoration: none;
-            color: #333;
-        }
-
-        .filter.active {
-            color: red;
-            font-weight: bold;
-            opacity: 1;
-        }
-
-        .filter.active i {
-            color: red;
-        }
-
-        .filter:hover {
-            opacity: 1;
-            transform: translateY(-3px);
-        }
-
-        .filter div {
-            font-size: 1rem;
-            width: 100%;
-        }
-
-        .filter p {
-            font-size: 0.8rem;
-            margin-top: 0.3rem;
-        }
-
-        /* TAX TOGGLE */
-        #gstBox {
-            display: flex;
-            margin-left: auto;
-            align-items: center;
-            gap: 0.7rem;
-            border: 1px solid #ccc;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            white-space: nowrap;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/listings.css">
 
     <body>
         <div id="topBar">
@@ -117,11 +54,15 @@
                 <p>Pool</p>
             </a>
 
-            <!-- TAX TOGGLE -->
+            <!-- offer TOGGLE -->
             <div id="gstBox">
                 <input class="form-check-input" type="checkbox" id="gstToggle">
-                <label for="gstToggle" style="margin:0;">Display total before GST</label>
+
+                <label for="gstToggle" id="offerText" class="offer-label">
+                    View available offers
+                </label>
             </div>
+
 
         </div>
 
@@ -134,41 +75,29 @@
                         <img src="<%= listing.image.url %>" class="card-img-top" height="260px">
 
                         <div class="card-body">
-                            <p class="card-text">
+                            <p class="card-text price-box">
+
                                 <b>
                                     <%= listing.title %>
                                 </b><br>
 
-                                ₹<%= listing.price.toLocaleString("en-IN") %> / night
-                                    <span class="gst-text" style="display:none; color:gray; font-size:0.9rem;">
-                                        (+18% GST)
-                                    </span>
+                                <span class="old-price" style="display:none">
+                                    ₹<%= listing.price.toLocaleString("en-IN") %>
+                                </span>
+
+                                <span class="new-price" data-price="<%= listing.price %>">
+                                    ₹<%= listing.price.toLocaleString("en-IN") %>
+
+                                </span>
+
+                                <span class="per-night"> / night</span>
+
+                                <span class="gst-text" style="display: none;">(15% OFF)</span>
                             </p>
                         </div>
                     </div>
                 </a>
                 <% } %>
         </div>
-
+        <script src="/js/offerToggle.js"></script>
     </body>
-    <script>
-        const toggle = document.getElementById("gstToggle");
-        const gstTexts = document.getElementsByClassName("gst-text");
-
-        toggle.addEventListener("change", () => {
-            for (let gst of gstTexts) {
-                gst.style.display = toggle.checked ? "inline" : "none";
-            }
-        });
-
-        const filters = document.querySelectorAll(".filter");
-        const currentPath = window.location.pathname;
-
-        filters.forEach(filter => {
-            const href = filter.getAttribute("href");
-
-            if (href === currentPath) {
-                filter.classList.add("active");
-            }
-        });
-    </script>

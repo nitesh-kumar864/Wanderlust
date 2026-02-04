@@ -1,4 +1,5 @@
 <% layout("/layouts/boilerplate") %>
+  <link rel="stylesheet" href="/css/listings.css">
 
   <div class="container mt-5">
     <div class="row justify-content-center">
@@ -27,9 +28,22 @@
             <%= listing.description %>
           </p>
 
-
           <ul class="list-unstyled fs-6 mt-3">
-            <li><strong>Price:</strong> ₹<%= listing.price.toLocaleString("en-IN") %>
+            <li class="price-box">
+              <strong>Price:</strong>
+
+              <span class="old-price" style="display:none;">
+                ₹<%= listing.price.toLocaleString("en-IN") %>
+              </span>
+
+              <span class="new-price" data-price="<%= listing.price %>">
+                ₹<%= listing.price.toLocaleString("en-IN") %>
+              </span>
+
+              <span class="gst-text" style="display:none;">(15% OFF)</span>
+            </li>
+
+
             </li>
             <li><strong>Location:</strong>
               <%= listing.location %>
@@ -112,7 +126,6 @@
                   <% } %>
               </div>
               <% } %>
-
       </div>
     </div>
 
@@ -136,5 +149,5 @@
       <% } %>
 
   </div>
-
+  <script src="/js/offerToggle.js"></script>
   <script src="/js/showMap.js"></script>
