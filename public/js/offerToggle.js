@@ -1,33 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const gstToggle = document.getElementById("gstToggle");
+  const offerToggle = document.getElementById("offerToggle");
   const offerText = document.getElementById("offerText");
 
-  const GST_RATE = 0.15;
+  const OFFER_RATE = 0.15;
 
   function applyOffer(isEnabled) {
     document.querySelectorAll(".price-box").forEach(box => {
       const newPriceEl = box.querySelector(".new-price");
       const oldPriceEl = box.querySelector(".old-price");
-      const gstText = box.querySelector(".gst-text");
+      const offersText = box.querySelector(".offers-text");
 
       if (!newPriceEl) return;
 
       const basePrice = Number(newPriceEl.dataset.price);
 
-      if (isEnabled) {
+      if (isEnabled) {  
         const discountedPrice = Math.round(
-          basePrice - basePrice * GST_RATE
+          basePrice - basePrice * OFFER_RATE
         );
 
         if (oldPriceEl) oldPriceEl.style.display = "inline";
         newPriceEl.innerText =
           "₹" + discountedPrice.toLocaleString("en-IN");
-        if (gstText) gstText.style.display = "inline";
+        if (offersText) offersText.style.display = "inline";
       } else {
         if (oldPriceEl) oldPriceEl.style.display = "none";
         newPriceEl.innerText =
           "₹" + basePrice.toLocaleString("en-IN");
-        if (gstText) gstText.style.display = "none";
+        if (offersText) offersText.style.display = "none";
       }
     });
 
@@ -47,15 +47,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const savedState = localStorage.getItem("offerEnabled") === "true";
 
-  if (gstToggle) {
-    gstToggle.checked = savedState;
+  if (offerToggle) {
+    offerToggle.checked = savedState;
   }
 
   applyOffer(savedState);
 
-  if (gstToggle) {
-    gstToggle.addEventListener("change", () => {
-      const isEnabled = gstToggle.checked;
+  if (offerToggle) {
+    offerToggle.addEventListener("change", () => {
+      const isEnabled = offerToggle.checked;
       localStorage.setItem("offerEnabled", isEnabled);
       applyOffer(isEnabled);
     });

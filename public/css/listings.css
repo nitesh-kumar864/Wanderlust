@@ -39,7 +39,7 @@
 }
 
 /* OFFER TOGGLE */
-#gstBox {
+#offerBox {
   display: flex;
   margin-left: auto;
   align-items: center;
@@ -86,8 +86,9 @@
   color: #ff385c;
 }
 
-.gst-text {
+.offers-text {
   font-size: 0.85rem;
   color: #0f9d58;
   margin-left: 5px;
 }
+  
