@@ -5,7 +5,7 @@ const Review = require("./models/review");
 // Login check
 module.exports.isLoggedIn = (req, res, next) => {
   if (!req.isAuthenticated()) {
-    req.session.redirectUrl = req.originalUrl;
+    req.session.redirectUrl = req.get("Referer") || "/listings";
     req.flash("error", "You must be logged in to access this page");
     return res.redirect("/login");
   }
