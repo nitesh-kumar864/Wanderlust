@@ -1,5 +1,5 @@
 <!-- PROJECT TITLE -->
-<h1 style="color:aqua" align="center">WanderLust</h1>
+<h1  align="center">WanderLust</h1>
 
 <p align="center">
   <b>Scalable Full Stack Travel Accommodation Platform</b><br/>
@@ -24,6 +24,45 @@ WanderLust is a scalable full-stack travel accommodation platform engineered usi
 The application enables users to explore travel properties, create listings, leave reviews, and manage content securely with robust authentication and session management.
 
 
+🚀 **[View Live Project](https://medicare-pr8s.onrender.com)**
+
+_Deployed on Render with environment-based configuration._
+
+---
+
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+<p align="center">
+  <img src="screenshots/home.png" width="80%"/>
+</p>
+<p align="center"><i>Explore featured travel destinations and listings.</i></p>
+
+---
+
+### ➕ Add New Listing
+<p align="center">
+  <img src="screenshots/Newlisting.png" width="80%"/>
+</p>
+<p align="center"><i>Create and upload new property listings with images.</i></p>
+
+---
+
+### 📄 Listing Details
+<p align="center">
+  <img src="screenshots/Listingdetails.png" width="80%"/>
+</p>
+<p align="center"><i>View property details, reviews, and ratings.</i></p>
+
+---
+
+### 🗺️ Map View
+<p align="center">
+  <img src="screenshots/map.png" width="80%"/>
+</p>
+
+<p align="center"><i>LocationIQ powered geocoding and map visualization.</i></p>
 
 ## 🚀 Core Features Highlights
 
@@ -98,18 +137,6 @@ WanderLust/
 ```
 ---
 
-## ✨ Key Functionalities
-
-- User Registration & Login
-- Session-based Authentication
-- Property Listing CRUD
-- Review & Rating System
-- Search & Filter Properties
-- Image Upload & Cloud Storage
-- Map-based Location Visualization
-- Secure Data Validation
-
----
 
 ## ⚙️ Installation & Setup
 
@@ -136,35 +163,3 @@ LOCATIONIQ_TOKEN=your_locationiq_token
 npm start
 
 ```
-
-## 📸 Screenshots
-
-### 🏠 Home Page
-<p align="center">
-  <img src="screenshots/home.png" width="80%"/>
-</p>
-<p align="center"><i>Explore featured travel destinations and listings.</i></p>
-
----
-
-### ➕ Add New Listing
-<p align="center">
-  <img src="screenshots/Newlisting.png" width="80%"/>
-</p>
-<p align="center"><i>Create and upload new property listings with images.</i></p>
-
----
-
-### 📄 Listing Details
-<p align="center">
-  <img src="screenshots/Listingdetails.png" width="80%"/>
-</p>
-<p align="center"><i>View property details, reviews, and ratings.</i></p>
-
----
-
-### 🗺️ Map View
-<p align="center">
-  <img src="screenshots/map.png" width="80%"/>
-</p>
-<p align="center"><i>LocationIQ powered geocoding and map visualization.</i></p>
